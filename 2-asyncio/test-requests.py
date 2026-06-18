@@ -7,8 +7,8 @@ import time
 
 BASE_URL = "http://127.0.0.1:8000"
 
-TOTAL_REQUESTS = 20000
-CONCURRENT = 10000
+TOTAL_REQUESTS = 200
+CONCURRENT = 100
 
 sem = asyncio.Semaphore(CONCURRENT)
 

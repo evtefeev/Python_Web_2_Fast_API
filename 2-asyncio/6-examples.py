@@ -7,10 +7,10 @@ app = FastAPI()
 
 @app.get("/sync")
 async def sync_endpoint():
-    time.sleep(2) 
+    time.sleep(0.2) 
     return {"message": "Синхронний запит завершений"}
 
 @app.get("/async")
 async def async_endpoint():
-    await asyncio.sleep(2)
+    await asyncio.sleep(0.2)
     return {"message": "Асинхронний запит завершений"}

@@ -1,27 +1,35 @@
 import time
+import asyncio
+
 
 def do_something():
     time.sleep(2)
-    return "Завдання завершено"
-
-start = time.time()
-do_something()
-do_something()
-do_something()
-do_something()
-do_something()
-end = time.time()
-print(f"Виконано за {end - start} секунд")
+    print("Завдання завершено")
 
 
+def main():
+    start = time.time()
+    do_something()
+    do_something()
+    end = time.time()
+    print(f"Синхронне виконання завершено за {end - start:.2f} секунд")
 
-import asyncio
 
 async def do_something_async():
     await asyncio.sleep(2)
-    return "Асинхронне завдання завершено"
+    print("Асинхронне завдання завершено")
 
-start = asyncio.get_event_loop().time()
-asyncio.run(do_something_async())
-end = asyncio.get_event_loop().time()
-print(f"Асинхронне виконання завершено за {end - start} секунд")
+
+async def async_main():
+    start = asyncio.get_running_loop().time()
+    tasks = [do_something_async(), do_something_async()]
+
+    await asyncio.gather(*tasks)
+
+    end = asyncio.get_running_loop().time()
+    print(f"Асинхронне виконання завершено за {end - start:.2f} секунд")
+
+
+if __name__ == "__main__":
+    main()
+    asyncio.run(async_main())
