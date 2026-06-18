@@ -4,9 +4,12 @@ app = FastAPI()
 
 @app.get("/greet/")
 def read_greeting(name: str = Query(None, description="Введіть ваше ім'я")):
-    return {"message": "Вітаємо!"}
+    return {"message": f"Вітаємо, {name}!"}
 
 
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, reload=True)
 
 # from fastapi import FastAPI
 # app = FastAPI()
@@ -22,7 +25,3 @@ def read_greeting(name: str = Query(None, description="Введіть ваше �
 #         return {"message": f"Вітаємо, {name}!"}
 #     else:
 #         return {"message": "Вітаємо, Гість!"}
-
-# if __name__ == "__main__":
-#     import uvicorn
-#     uvicorn.run(app, host="127.0.0.1", port=8000, reload=True)
