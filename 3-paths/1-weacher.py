@@ -11,7 +11,7 @@ weather_data = {
 }
 
 
-@app.get("/weather/{city}")
+@app.get("/weather/{cit}")
 def get_weather(city: str):
     weather = weather_data.get(city)
     if weather:

@@ -3,18 +3,13 @@ from pydantic import BaseModel
 from typing import List
 
 
-# user = {
-#     "username": "john_doe",
-#     "email": "john.doe@example.com",
-#     "age": 30,
-#     "interests": ["programming", "books", "travel"],
-# }
+user = {
+    "username": "john_doe",
+    "email": "john.doe@example.com",
+    "age": 30,
+    "interests": ["programming", "books", "travel"],
+}
 
-
-app = FastAPI()
-
-
-# Модель користувача
 class User(BaseModel):
     username: str
     email: str
@@ -22,7 +17,16 @@ class User(BaseModel):
     interests: List[str]
 
 
+app = FastAPI()
+
+
+# Модель користувача
+
+
 @app.post("/users/")
 async def create_user(user: User):
     # FastAPI автоматично конвертує JSON-запит у екземпляр User
     return {"message": "Користувач створений!", "user": user}
+
+
+

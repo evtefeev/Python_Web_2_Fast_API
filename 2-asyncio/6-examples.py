@@ -6,7 +6,7 @@ import time
 app = FastAPI()
 
 @app.get("/sync")
-async def sync_endpoint():
+def sync_endpoint():
     time.sleep(0.2) 
     return {"message": "Синхронний запит завершений"}
 
